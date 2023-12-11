@@ -8,4 +8,14 @@ def sorting(inpVideo):
     return inpVideo[1]
 
 
-print(sorting(video))
+print(f"Descending order : {sorting(video)}")
+
+# for acsending order
+
+
+def sorting(inpVideo):
+    inpVideo[1].sort()
+    return inpVideo[1]
+
+
+print(f"Ascending order : {sorting(video)}")
