@@ -10,7 +10,7 @@ def sorting(inpVideo):
 
 print(f"Descending order : {sorting(video)}")
 
-# for acsending order
+# for ascending order
 
 
 def sorting(inpVideo):

@@ -14,14 +14,16 @@ def longestInDict(inpDict):
     return ", ".join(map(str, result))
 
 
-print(f"Method 1 using inbuilt method: {longestInDict(videos)}")
+print(f"Method 1 using inbuilt  max method: {longestInDict(videos)}")
 
 # time complexity for this method is O(n2)
 
 # it can also be done using for loop to find the max but time complexity will again
 # increase
 
-# method 2:
+# -----------------------------------------------------------------------------------
+
+# method 2:- using for loop method
 
 
 def longestInDict(inpDict):
@@ -37,6 +39,5 @@ def longestInDict(inpDict):
 
 print(f"Method 2 using for loop method: {longestInDict(videos)}")
 
-# time complexity of this method 2 is more O(n3) as 2 for loops and 1 join-
-# so method 1 is preferred with
-# in built function
+# time complexity of this method 2 is more as 2 for loops and 1 join-
+# so method 1 is preferred with in-built function

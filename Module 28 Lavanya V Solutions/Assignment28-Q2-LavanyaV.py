@@ -9,7 +9,7 @@ def longestPlayTime(tupleInp):
     return max(tupleInp[1])
 
 
-print(f"Method 1 using inbuilt method: {longestPlayTime(videoTuple)}")
+print(f"Method 1 using inbuilt max method: {longestPlayTime(videoTuple)}")
 
 # --------------------------------------------------------------------------
 
