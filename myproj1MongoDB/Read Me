@@ -1,0 +1,4 @@
+This is same as myproj1- which is SQL query DB access.
+
+This is for MongoDB - working code is in system in myproj1 - to use this code.. can create a project fresh and make changes in 
+settings.py of project(SQL DB codes commenting) and add Views and URL code and can use this MONGO DB code to check working. 
