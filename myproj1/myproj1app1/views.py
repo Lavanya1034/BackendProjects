@@ -27,3 +27,42 @@ class Notes(generics.GenericAPIView):
             return Response({"status":"success", "data":{"note":serializer.data}}, status=status.HTTP_201_CREATED)
         else:
             return Response({"status":"fail", "messages":serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class NoteDetail(generics.GenericAPIView):
+    queryset = NoteModel.objects.all()
+    serializer_class = NoteSerializer
+
+    def get_note(self, pk):
+        try:
+            return NoteModel.objects.get(pk=pk)
+        except:
+            return None
+        
+    def get(self, request, pk):
+        note = self.get_note(pk=pk)
+        if note==None:
+            return Response({"status":"fail", f"message":"Note with ID: {pk} not found"}, status=status.HTTP_404_NOT_FOUND)
+        
+        serializer = self.serializer_class(note)
+        return Response({"status":"success", "data":{"note":serializer.data}})
+    
+    def patch(self, request, pk):
+        note = self.get_note(pk)
+        if note==None:
+            return Response({"status":"fail", f"message":"Note with ID: {pk} not found"}, status=status.HTTP_404_NOT_FOUND)
+        
+        serializer = self.serializer_class(note, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.validated_data['updatedAt'] = datetime.now()
+            serializer.save()
+            return Response({"status":"success", "data":{"note":serializer.data}})
+        return Response({"status":"fail", "message":serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+    
+    def delete(self, request, pk):
+        note = self.get_note(pk)
+        if note==None:
+            return Response({"status":"fail", f"message":"Note with ID: {pk} not found"}, status=status.HTTP_404_NOT_FOUND)
+        
+        note.delete()
+        return Response({"status":"deleted"},status=status.HTTP_204_NO_CONTENT)
